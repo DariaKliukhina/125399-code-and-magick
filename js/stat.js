@@ -8,18 +8,18 @@ var FONT_GAP = 16;
 var BAR_GAP = 50;
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
-var CONGRATS_HEIGHT =  BAR_GAP + FONT_GAP * 2 + GAP * 2;
+var CONGRATS_HEIGHT = BAR_GAP + FONT_GAP * 2 + GAP * 2;
 var BAR_X = CLOUD_X + BAR_GAP;
 
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-var getMaxElement = function(arr) {
+var getMaxElement = function (arr) {
   var maxElement = arr[0];
 
-  for (var i =  0; i < arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     if (arr[i] > maxElement) {
       maxElement = arr[i];
     }
@@ -27,7 +27,7 @@ var getMaxElement = function(arr) {
   return maxElement;
 };
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
@@ -41,7 +41,7 @@ window.renderStatistics = function(ctx, names, times) {
   for (var i = 0; i < names.length; i++) {
 
     ctx.fillStyle = '#000';
-    ctx.fillText(Math.round(times[i]), BAR_X + (BAR_WIDTH + BAR_GAP) * i, CONGRATS_HEIGHT + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime) - GAP );
+    ctx.fillText(Math.round(times[i]), BAR_X + (BAR_WIDTH + BAR_GAP) * i, CONGRATS_HEIGHT + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime) - GAP);
     ctx.fillText(names[i], BAR_X + (BAR_WIDTH + BAR_GAP) * i, CONGRATS_HEIGHT + BAR_HEIGHT + GAP * 2);
 
     if (names[i] === 'Вы') {
