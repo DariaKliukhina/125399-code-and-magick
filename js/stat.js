@@ -27,15 +27,9 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-
-var barOpacity;
-
-var getOpacity = function () {
-  barOpacity = Math.random();
-  if (barOpacity === 0) {
-    barOpacity = getOpacity();
-  }
-  return barOpacity;
+var getRandomNumber = function (min, max) {
+  var randNumber = min + Math.random() * (max - min);
+  return randNumber;
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -57,7 +51,7 @@ window.renderStatistics = function (ctx, names, times) {
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255,0,0,1)';
     } else {
-      ctx.fillStyle = 'rgba(24,62,214,' + barOpacity + ')';
+      ctx.fillStyle = 'rgba(24,62,214,' + getRandomNumber(0.1, 1) + ')';
     }
     ctx.fillRect(BAR_X + (BAR_WIDTH + BAR_GAP) * i, CONGRATS_HEIGHT + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime), BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
   }
