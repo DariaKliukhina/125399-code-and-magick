@@ -14,7 +14,7 @@ var getWizardName = function(WIZARD_NAMES, WIZARD_SURNAMES) {
   var wizardSurameIndex = Math.floor(Math.random() * WIZARD_SURNAMES.length);
   var wizardName = WIZARD_NAMES[wizardNameIndex];
   var wizardSurame = WIZARD_SURNAMES[wizardSurameIndex];
-  return wizardName + wizardSurame;
+  return wizardName + ' ' + wizardSurame;
 };
 
 var getCoatColor = function(COAT_COLORS) {
@@ -27,28 +27,18 @@ var getEyesColor = function(EYES_COLORS) {
   return EYES_COLORS[EyesColorIndex];
 };
 
-var wizards = [
-  {
-    name: getWizardName(WIZARD_NAMES, WIZARD_SURNAMES),
-    coatColor: getCoatColor(COAT_COLORS),
-    eyesColor: getEyesColor(EYES_COLORS)
-  },
-  {
-    name: getWizardName(WIZARD_NAMES, WIZARD_SURNAMES),
-    coatColor: getCoatColor(COAT_COLORS),
-    eyesColor: getEyesColor(EYES_COLORS)
-  },
-  {
-    name: getWizardName(WIZARD_NAMES, WIZARD_SURNAMES),
-    coatColor: getCoatColor(COAT_COLORS),
-    eyesColor: getEyesColor(EYES_COLORS)
-  },
-  {
-    name: getWizardName(WIZARD_NAMES, WIZARD_SURNAMES),
-    coatColor: getCoatColor(COAT_COLORS),
-    eyesColor: getEyesColor(EYES_COLORS)
-  }
-];
+var WIZARD_COUNT = 4;
+
+var Wizard = {
+  name: getWizardName(WIZARD_NAMES, WIZARD_SURNAMES),
+  coatColor: getCoatColor(COAT_COLORS),
+  eyesColor: getEyesColor(EYES_COLORS)
+};
+var wizards = [];
+for (var i = 0; i < 4; i++) {
+  wizards[i] = Wizard;
+};
+
 
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
