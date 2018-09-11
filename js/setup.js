@@ -32,10 +32,9 @@ var getRandomWizard = function () {
 var wizards = [];
 
 var getWizards = function () {
-  for (var i = 0; i < WIZARD_COUNT.length; i++) {
+  for (var i = 0; i < WIZARD_COUNT; i++) {
     wizards.push(getRandomWizard());
   }
-  return wizards;
 };
 
 getWizards();
