@@ -7,39 +7,38 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
   'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
-var getWizardName = function(wizardNames, wizardSurnames) {
-  var wizardNameIndex = Math.floor(Math.random() * WIZARD_NAMES.length);
-  var wizardSurameIndex = Math.floor(Math.random() * WIZARD_SURNAMES.length);
+var getWizardName = function (wizardNames, wizardSurnames) {
+  var wizardNameIndex = Math.floor(Math.random() * wizardNames.length);
+  var wizardSurameIndex = Math.floor(Math.random() * wizardSurnames.length);
   var wizardName = wizardNames[wizardNameIndex];
   var wizardSurame = wizardSurnames[wizardSurameIndex];
   return wizardName + ' ' + wizardSurame;
 };
 
-var getParameterIndex = function(array) {
+var getParameterIndex = function (array) {
   var parameterIndex = Math.floor(Math.random() * array.length);
   return array[parameterIndex];
 };
 
 var getRandomWizard = function () {
   var randomWizard = {
-    name: getWizardName(wizardNames, wizardSurnames),
+    name: getWizardName(WIZARD_NAMES, WIZARD_SURNAMES),
     coatColor: getParameterIndex(COAT_COLORS),
     eyesColor: getParameterIndex(EYES_COLORS)
   };
-
   return randomWizard;
 };
 
 var wizards = [];
 
-var getWizards =  function (){
+var getWizards = function () {
   for (var i = 0; i < WIZARD_COUNT.length; i++) {
     wizards.push(getRandomWizard());
-  };
-
+  }
   return wizards;
-}
+};
 
+getWizards();
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
@@ -47,11 +46,11 @@ userDialog.classList.remove('hidden');
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-var wizardRender = function (randomWizard) {
+var wizardRender = function (someWizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
-  wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+  wizardElement.querySelector('.setup-similar-label').textContent = someWizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = someWizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = someWizard.eyesColor;
   return wizardElement;
 };
 
